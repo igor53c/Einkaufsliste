@@ -8,11 +8,12 @@ import com.ipcoding.einkaufsliste.ui.theme.Red
 @Entity
 data class Item(
     val title: String,
-    val quantity: String?,
-    val color: Int,
+    var color: Int,
     @PrimaryKey val id: Int? = null
 ) {
     companion object {
         val itemColors = listOf(Red, Green)
     }
 }
+
+class InvalidItemExeption(message: String): Exception(message)

@@ -10,6 +10,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.ipcoding.einkaufsliste.feature_item.presentation.add_edit_item.AddEditItemScreen
+import com.ipcoding.einkaufsliste.feature_item.presentation.items.ItemsScreen
+import com.ipcoding.einkaufsliste.feature_item.presentation.util.Screen
 import com.ipcoding.einkaufsliste.ui.theme.EinkaufslisteTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,27 +27,44 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             EinkaufslisteTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.ItemsScreen.route
+                    ) {
+                        composable(route = Screen.ItemsScreen.route) {
+                            ItemsScreen(navController = navController)
+                        }
+                        composable(
+                            route = Screen.AddEditItemScreen.route +
+                                    "?itemId={itemId}&itemColor={itemColor}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "itemId"
+                                ) {
+                                    type = NavType.IntType
+                                    defaultValue = -1
+                                },
+                                navArgument(
+                                    name = "itemColor"
+                                ) {
+                                    type = NavType.IntType
+                                    defaultValue = -1
+                                },
+                            )
+                        ) {
+                            val color = it.arguments?.getInt("itemColor") ?: -1
+                            AddEditItemScreen(
+                                navController = navController,
+                                itemColor = color
+                            )
+                        }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    EinkaufslisteTheme {
-        Greeting("Android")
     }
 }
