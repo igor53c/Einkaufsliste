@@ -1,7 +1,6 @@
 package com.ipcoding.einkaufsliste.feature_item.presentation.items
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,16 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.ipcoding.einkaufsliste.feature_item.domain.model.Item
 import com.ipcoding.einkaufsliste.feature_item.domain.util.ItemOrder
-import com.ipcoding.einkaufsliste.feature_item.domain.util.OrderType
 import com.ipcoding.einkaufsliste.feature_item.presentation.items.components.OneItem
 import com.ipcoding.einkaufsliste.feature_item.presentation.util.Screen
 import kotlinx.coroutines.launch
+
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

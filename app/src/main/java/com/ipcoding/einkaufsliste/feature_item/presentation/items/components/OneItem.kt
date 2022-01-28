@@ -15,10 +15,11 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.ColorUtils
+import com.ipcoding.einkaufsliste.core.util.TestTags
 import com.ipcoding.einkaufsliste.feature_item.domain.model.Item
 
 @Composable
@@ -30,6 +31,7 @@ fun OneItem(
 ) {
     Box(
         modifier = modifier
+            .testTag(TestTags.NOTE_ITEM)
     ) {
         Canvas(modifier = Modifier.matchParentSize()) {
             val clipPath = Path().apply {

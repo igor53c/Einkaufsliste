@@ -6,7 +6,7 @@ import com.ipcoding.einkaufsliste.feature_item.domain.repository.ItemRepository
 import com.ipcoding.einkaufsliste.ui.theme.Green
 import com.ipcoding.einkaufsliste.ui.theme.Red
 
-class UpdateItem (
+class ChangeColorItem (
     private val repository: ItemRepository
 ) {
 

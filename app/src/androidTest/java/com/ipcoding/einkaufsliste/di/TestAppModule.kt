@@ -14,33 +14,32 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object TestAppModule {
 
     @Provides
     @Singleton
-    fun provideItemDatabase(app: Application): ItemDatabase {
-        return Room.databaseBuilder(
+    fun provideNoteDatabase(app: Application): ItemDatabase {
+        return Room.inMemoryDatabaseBuilder(
             app,
             ItemDatabase::class.java,
-            ItemDatabase.DATABASE_NAME
         ).build()
     }
 
     @Provides
     @Singleton
-    fun provideItemRepository(db: ItemDatabase): ItemRepository {
+    fun provideNoteRepository(db: ItemDatabase): ItemRepository {
         return ItemRepositoryImpl(db.itemDao)
     }
 
     @Provides
     @Singleton
-    fun provideUseCases(repository: ItemRepository): ItemUseCases {
+    fun provideNoteUseCases(repository: ItemRepository): ItemUseCases {
         return ItemUseCases(
             getItems = GetItems(repository),
             deleteItem = DeleteItem(repository),
-            changeColorItem = ChangeColorItem(repository),
             addItem = AddItem(repository),
-            getItem = GetItem(repository)
+            getItem = GetItem(repository),
+            changeColorItem = ChangeColorItem(repository)
         )
     }
 }

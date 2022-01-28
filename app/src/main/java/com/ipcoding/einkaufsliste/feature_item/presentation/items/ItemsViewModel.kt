@@ -54,7 +54,7 @@ class ItemsViewModel @Inject constructor(
             }
             is ItemsEvent.UpdateItem -> {
                 viewModelScope.launch {
-                    itemUseCases.updateItem(event.item)
+                    itemUseCases.changeColorItem(event.item)
                 }
             }
             is ItemsEvent.RestoreItem -> {
