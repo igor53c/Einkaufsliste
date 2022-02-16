@@ -53,7 +53,7 @@ fun OneItem(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
-                .padding(end = 32.dp)
+                .padding(end = 16.dp)
         ) {
             Text(
                 text = item.title,
