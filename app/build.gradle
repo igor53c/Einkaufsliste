@@ -12,7 +12,7 @@ android {
         applicationId "com.ipcoding.einkaufsliste"
         minSdk 21
         targetSdk 31
-        versionCode 5
+        versionCode 7
         versionName "1.0"
 
         testInstrumentationRunner "com.ipcoding.einkaufsliste.HiltTestRunner"

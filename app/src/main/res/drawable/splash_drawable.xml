@@ -6,5 +6,5 @@
     <item android:drawable="@color/red10"/>
     <item
         android:gravity="center"
-        android:drawable="@drawable/icon_list"/>
+        android:drawable="@drawable/icon"/>
 </layer-list>
